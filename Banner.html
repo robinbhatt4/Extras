@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery and Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #E8EBF8;
+    }
+    .gallery-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .gallery-item {
+      background-color: #ddd;
+      width: 320px;
+      height: 373px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+    .form-section {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .btn-gradient {
+      background: linear-gradient(90deg, #ff0080, #ff8c00);
+      color: #fff;
+    }
+    .next-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="full-width-section">
+    <div class="row">
+      <!-- Gallery Section -->
+      <div class="col-md-9">
+        <h3 class="text-center">Our Gallery</h3>
+        <p class="text-center">Bringing Color and Quality to Every Space!</p>
+        <div class="gallery-container">
+          <div class="gallery col-md-9" id="gallery">
+         
+            <div class="gallery-item col-md-4"> <img src="ss.jpg" class="card-img-top" width="320" height="373" ></div>
+            <div class="gallery-item col-md-4"><img src="ss.jpg" class="card-img-top" width="320" height="373" ></div>
+            <div class="gallery-item col-md-4"><img src="ss.jpg" class="card-img-top" width="320" height="373" ></div> <!-- Added more items for scrolling -->
+            <div class="gallery-item col-md-4"><img src="ss.jpg" class="card-img-top" width="320" height="373" ></div>
+            <div class="gallery-item col-md-4"><img src="ss.jpg" class="card-img-top" width="320" height="373" ></div>
+            <div class="gallery-item col-md-4"><img src="ss.jpg" class="card-img-top" width="320" height="373" ></div>
+          </div>
+          <button class="next-btn" onclick="scrollGallery()">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- Form Section -->
+      <div class="col-md-3">
+        <div class="form-section">
+          <h4 class="text-center">Book Complimentary Call!</h4>
+          <p class="text-center">Receive a Free Estimate and Color Consultation from Our Experts.</p>
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" placeholder="Enter your city">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone No.</label>
+              <input type="tel" class="form-control" id="phone" placeholder="+91">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="whatsapp">
+              <label class="form-check-label" for="whatsapp">I'd like to receive updates and notifications via WhatsApp</label>
+            </div>
+            <button type="submit" class="btn btn-gradient btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentScroll = 0;
+    function scrollGallery() {
+      const gallery = document.getElementById('gallery');
+      const galleryWidth = gallery.scrollWidth;
+      const containerWidth = gallery.parentElement.offsetWidth;
+      const maxScroll = galleryWidth - containerWidth;
+
+      // Move the gallery by the width of one item (plus margin)
+      const itemWidth = document.querySelector('.gallery-item').offsetWidth + 20;
+
+      currentScroll += itemWidth;
+
+      if (currentScroll > maxScroll) {
+        currentScroll = 0; // Reset scroll if at the end
+      }
+
+      gallery.style.transform = translateX(-${currentScroll}px);
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
